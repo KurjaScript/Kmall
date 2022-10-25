@@ -5,6 +5,14 @@ const router = createRouter({
     {
       path: '/',
       redirect: '/home'
+    },
+    {
+      path: '/home',
+      name: 'home',
+      component: () => import('/src/views/Home.vue'),
+      meta: {
+        index: 1
+      }
     }
   ]
 })
