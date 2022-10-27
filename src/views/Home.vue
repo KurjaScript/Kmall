@@ -1,7 +1,8 @@
 <template>
   <div>
     <header class="home-header wrap" :class="{'active': headerScroll}">
-      <router-link tag="i" to="./category"><i class="nbicon nbmenu"></i></router-link>
+      
+      <router-link tag="i" to="./category"><van-icon name="wap-nav" /></router-link>
       <div class="header-search">
         <span class="app-name">Kmall 商城</span>
         <i class="iconfont icon-search"></i>
@@ -12,15 +13,17 @@
         <van-icon name="manger-o"></van-icon>
       </router-link>
     </header>
+    <NavBar />
   </div>
 </template>
 <script>
 import {reactive} from 'vue'
+import NavBar from '../components/NavBar.vue';
 export default {
   name: 'home',
   components: {
     // swiper,
-    // navBar
+    NavBar
   },
   setup() {
     const state = reactive({
