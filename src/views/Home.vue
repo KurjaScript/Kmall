@@ -10,14 +10,19 @@
       </div>
       <router-link class="login" tag="span" to="./login" v-if="!isLogin">登录</router-link>
       <router-link class="login" tag="span" to="./user" v-else>
-        <van-icon name="manger-o"></van-icon>
+        <!-- <van-icon name="manger-o"></van-icon> -->
+        <van-icon name="user-circle-o" size="25px" />
       </router-link>
     </header>
     <NavBar />
   </div>
 </template>
 <script>
-import {reactive} from 'vue'
+import {reactive, onMounted, toRefs} from 'vue'
+import { Store } from 'vuex'
+import { Toast } from 'vant'
+import { getHome } from '/src/service/home.js'
+import { getLocal} from '../common/js/utils'
 import NavBar from '../components/NavBar.vue';
 export default {
   name: 'home',
@@ -27,8 +32,25 @@ export default {
   },
   setup() {
     const state = reactive({
+      isLogin: true,
       headScroll: false // 滚动透明判断
     })
+    onMounted(async () => {
+      const token = getLocal('token')
+      if (token) {
+        state.isLogin = true
+        // 获取购物车数据
+        Store.dispatch('updateCart')
+      }
+      Toast.loading({
+        message: '加载中...',
+        forbidClick: true
+      })
+      const { data } = await getHome()
+    })
+    return {
+      ...toRefs(state)
+    }
   }
 }
 </script>
@@ -83,6 +105,14 @@ export default {
           font-size: 12px;
           color: #666;
           line-height: 21px;
+      }
+    }
+    .login {
+      color: @primary;
+      line-height: 52px;
+      .van-icon-user-circle-o {
+        font-size: 20px;
+        vertical-align: -3px;
       }
     }
   }

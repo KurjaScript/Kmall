@@ -28,7 +28,7 @@
 import { onMounted, computed } from 'vue'
 import { useRoute } from 'vue-router'
 import { useStore } from 'vuex'
-import { getLocal } from '/src/common/js/utiles.js'
+import { getLocal } from '/src/common/js/utils.js'
 export default {
   setup() {
     const route = useRoute()
