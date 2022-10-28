@@ -13,6 +13,16 @@ const router = createRouter({
       meta: {
         index: 1
       }
+    },
+    {
+      path: '/category',
+      name: 'category',
+      component: () => import('/src/views/Category.vue')
+    },
+    {
+      path: '/user',
+      name: 'name',
+      component: () => import('/src/views/user.vue')
     }
   ]
 })
