@@ -16,6 +16,7 @@
     </header>
     <NavBar />
     <swiper :list ="swiperList"></swiper>
+    <CategoryList></CategoryList>
   </div>
 </template>
 <script>
@@ -24,13 +25,15 @@ import { Store } from 'vuex'
 import { Toast } from 'vant'
 import { getHome } from '/src/service/home.js'
 import { getLocal} from '../common/js/utils'
-import NavBar from '../components/NavBar.vue';
+import NavBar from '../components/NavBar.vue'
 import Swiper from '../components/Swiper.vue'
+import CategoryList from '../components/CategoryList.vue'
 export default {
   name: 'home',
   components: {
+    NavBar,
     Swiper,
-    NavBar
+    CategoryList
   },
   setup() {
     const state = reactive({
