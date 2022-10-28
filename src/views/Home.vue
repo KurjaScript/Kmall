@@ -15,6 +15,7 @@
       </router-link>
     </header>
     <NavBar />
+    <swiper :list ="swiperList"></swiper>
   </div>
 </template>
 <script>
@@ -24,15 +25,17 @@ import { Toast } from 'vant'
 import { getHome } from '/src/service/home.js'
 import { getLocal} from '../common/js/utils'
 import NavBar from '../components/NavBar.vue';
+import Swiper from '../components/Swiper.vue'
 export default {
   name: 'home',
   components: {
-    // swiper,
+    Swiper,
     NavBar
   },
   setup() {
     const state = reactive({
       isLogin: true,
+      swiperList: [],
       headScroll: false // 滚动透明判断
     })
     onMounted(async () => {
@@ -47,6 +50,7 @@ export default {
         forbidClick: true
       })
       const { data } = await getHome()
+      state.swiperList = data.carousels
     })
     return {
       ...toRefs(state)
