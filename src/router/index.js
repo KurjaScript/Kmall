@@ -23,6 +23,15 @@ const router = createRouter({
       path: '/user',
       name: 'name',
       component: () => import('/src/views/user.vue')
+    },
+
+
+
+    // test
+    {
+      path: '/neirong',
+      name: '内容插槽',
+      component: () => import('/src/test/slot/内容插槽/Parent.vue'),
     }
   ]
 })
