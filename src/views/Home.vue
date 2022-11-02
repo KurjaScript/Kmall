@@ -1,6 +1,6 @@
 <template>
   <div>
-    <header class="home-header wrap" :class="{'active': headerScroll}">
+    <header class="home-header wrap" :class="{'active': headScroll}">
       
       <router-link tag="i" to="./category"><van-icon name="wap-nav" /></router-link>
       <div class="header-search">
@@ -38,7 +38,7 @@
   </div>
 </template>
 <script>
-import {reactive, onMounted, toRefs} from 'vue'
+import {reactive, onMounted, toRefs, nextTick} from 'vue'
 import { Store } from 'vuex'
 import { Toast } from 'vant'
 import { getHome } from '/src/service/home.js'
@@ -84,6 +84,13 @@ export default {
       state.hotGoodses = data.hotGoodses
       state.recommendGoodses = data.recommendGoodses
       state.loading = false
+    })
+
+    nextTick(() => {
+      window.addEventListener('scroll', () => {
+        let scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
+        scrollTop > 100 ? state.headScroll = true : state.headScroll = false
+      })
     })
     return {
       ...toRefs(state)
@@ -152,5 +159,8 @@ export default {
         vertical-align: -3px;
       }
     }
+  }
+  .active {
+    background-color: @primary;
   }
 </style>
