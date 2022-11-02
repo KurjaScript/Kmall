@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <header class="header">
-      <slot name="header">remai</slot>
+      <slot name="header"></slot>
     </header>
     <skeleton>
       <slot name="skeleton"></slot>

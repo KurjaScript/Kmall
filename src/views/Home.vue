@@ -23,14 +23,14 @@
         <GoodBox :loading="loading" :goods="newGoodses"></GoodBox>
       </template>
     </Commodity>
-    <Commodity v-if="hotGoodses && !loading">
+    <Commodity v-if="hotGoodses && !loading"></Commodity>
       <template v-slot:header>热门商品</template>
       <template v-slot:skeleton>
         <GoodBox :loading="loading" :goods="hotGoodses"></GoodBox>
       </template>
     </Commodity>
     <Commodity v-if="recommendGoodses && !loading">
-      <template v-slot:recommentGoodses>最新推荐</template>
+      <template v-slot:header>最新推荐</template>
       <template v-slot:skeleton>
         <GoodBox :loading="loading" :goods="recommendGoodses" :showBottom="true"></GoodBox>
       </template>
