@@ -1,6 +1,6 @@
 <template>
   <van-skeleton title :row="3" :loading="loading">
-    <div class="good-box" :class="{active: showBottom}">
+    <div class="good-box" :class="{'active': showBottom}">
       <div class="good-item" v-for="item in goods" :key="item.goodsId" @click="goToDetail(item)">
         <img :src="$filters.prefix(item.goodsCoverImg)" alt="">
         <div class="good-desc">
