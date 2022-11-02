@@ -1,7 +1,6 @@
 <template>
   <div>
     <header class="home-header wrap" :class="{'active': headScroll}">
-      
       <router-link tag="i" to="./category"><van-icon name="wap-nav" /></router-link>
       <div class="header-search">
         <span class="app-name">Kmall 商城</span>
@@ -10,7 +9,6 @@
       </div>
       <router-link class="login" tag="span" to="./login" v-if="!isLogin">登录</router-link>
       <router-link class="login" tag="span" to="./user" v-else>
-        <!-- <van-icon name="manger-o"></van-icon> -->
         <van-icon name="user-circle-o" size="25px" />
       </router-link>
     </header>
@@ -159,8 +157,5 @@ export default {
         vertical-align: -3px;
       }
     }
-  }
-  .active {
-    background-color: @primary;
   }
 </style>
