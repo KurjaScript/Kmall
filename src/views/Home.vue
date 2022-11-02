@@ -17,6 +17,25 @@
     <NavBar />
     <swiper :list ="swiperList"></swiper>
     <CategoryList></CategoryList>
+    <Commodity v-if="newGoodses && !loading">
+      <template v-slot:header>新品上线</template>
+      <template v-slot:skeleton>
+        <GoodBox :loading="loading" :goods="newGoodses"></GoodBox>
+      </template>
+    </Commodity>
+    <Commodity v-if="hotGoodses && !loading">
+      <template v-slot:header>热门商品</template>
+      <template v-slot:skeleton>
+        <GoodBox :loading="loading" :goods="hotGoodses"></GoodBox>
+      </template>
+    </Commodity>
+    <Commodity v-if="recommendGoodses && !loading">
+      <template v-slot:recommentGoodses>最新推荐</template>
+      <template v-slot:skeleton>
+        <GoodBox :loading="loading" :goods="recommendGoodses" :showBottom="true"></GoodBox>
+      </template>
+    </Commodity>
+
   </div>
 </template>
 <script>
@@ -28,18 +47,26 @@ import { getLocal} from '../common/js/utils'
 import NavBar from '../components/NavBar.vue'
 import Swiper from '../components/Swiper.vue'
 import CategoryList from '../components/CategoryList.vue'
+import Commodity from '../common/Commodity.vue'
+import GoodBox from '../common/GoodBox.vue'
 export default {
   name: 'home',
   components: {
     NavBar,
     Swiper,
-    CategoryList
+    CategoryList,
+    Commodity,
+    GoodBox
   },
   setup() {
     const state = reactive({
       isLogin: true,
       swiperList: [],
-      headScroll: false // 滚动透明判断
+      headScroll: false, // 滚动透明判断
+      newGoodses: [], // 新品上线
+      hotGoodses: [], // 热卖商品
+      recommendGoodses: [], // 最新推荐
+      loading: true
     })
     onMounted(async () => {
       const token = getLocal('token')
@@ -54,6 +81,10 @@ export default {
       })
       const { data } = await getHome()
       state.swiperList = data.carousels
+      state.newGoodses = data.newGoodses
+      state.hotGoodses = data.hotGoodses
+      state.recommendGoodses = data.recommendGoodses
+      state.loading = false
     })
     return {
       ...toRefs(state)
