@@ -23,7 +23,7 @@
         <GoodBox :loading="loading" :goods="newGoodses"></GoodBox>
       </template>
     </Commodity>
-    <Commodity v-if="hotGoodses && !loading"></Commodity>
+    <Commodity v-if="hotGoodses && !loading">
       <template v-slot:header>热门商品</template>
       <template v-slot:skeleton>
         <GoodBox :loading="loading" :goods="hotGoodses"></GoodBox>
@@ -35,7 +35,6 @@
         <GoodBox :loading="loading" :goods="recommendGoodses" :showBottom="true"></GoodBox>
       </template>
     </Commodity>
-
   </div>
 </template>
 <script>
