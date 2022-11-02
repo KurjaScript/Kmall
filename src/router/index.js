@@ -29,9 +29,14 @@ const router = createRouter({
 
     // test
     {
-      path: '/neirong',
+      path: '/ContentSlot',
       name: '内容插槽',
       component: () => import('/src/test/slot/内容插槽/Parent.vue'),
+    },
+    {
+      path: '/DefaultContentSlot',
+      name: '默认内容插槽',
+      component: () => import('/src/test/slot/默认内容插槽/Parent.vue')
     }
   ]
 })
