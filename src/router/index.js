@@ -37,6 +37,11 @@ const router = createRouter({
       path: '/DefaultContentSlot',
       name: '默认内容插槽',
       component: () => import('/src/test/slot/默认内容插槽/Parent.vue')
+    },
+    {
+      path: '/NameSlot',
+      name: '具名插槽',
+      component: () => import('/src/test/slot/具名插槽/Parent.vue')
     }
   ]
 })
