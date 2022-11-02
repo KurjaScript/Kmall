@@ -42,6 +42,11 @@ const router = createRouter({
       path: '/NameSlot',
       name: '具名插槽',
       component: () => import('/src/test/slot/具名插槽/Parent.vue')
+    },
+    {
+      path: '/ScopeSlot',
+      name: '作用域插槽',
+      component: () => import('/src/test/slot/作用域插槽/Parent.vue')
     }
   ]
 })
